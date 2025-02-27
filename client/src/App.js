@@ -1,8 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Home from "./Components/Home";
 import IndexPage from "./Components/IndexPage";
 import Documentation from "./Components/Documentation"; 
 import './Components/style.css';
+import { useEffect } from 'react';
 
 import ReactGA from 'react-ga4';
 
