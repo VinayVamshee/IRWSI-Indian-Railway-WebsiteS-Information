@@ -4,10 +4,27 @@ import IndexPage from "./Components/IndexPage";
 import Documentation from "./Components/Documentation"; 
 import './Components/style.css';
 
+import ReactGA from 'react-ga4';
+
+const TRACKING_ID = 'G-EL8Z9J8YYZ';
+ReactGA.initialize(TRACKING_ID);
+
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname });
+  }, [location]);
+
+  return null;
+}
+
+
 function App() {
   return (
     <Router>
       <div className="App">
+     <AnalyticsTracker />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/index" element={<IndexPage />} />
