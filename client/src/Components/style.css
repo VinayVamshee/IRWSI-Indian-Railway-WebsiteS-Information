@@ -161,6 +161,8 @@
     margin: 0px;
     margin-bottom: 2px;
     padding: 5px;
+    font-weight: bold;
+    color: blue;
 
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -176,13 +178,13 @@
 
     width: 100%;
     height: fit-content;
-    padding: 5px;
+    padding: 10px;
 
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.198);
 
     animation: slideDown 0.8s ease-in;
@@ -200,7 +202,7 @@
     padding: 10px;
     display: flex;
     justify-content: flex-start;
-    gap: 5px;
+    gap: 15px;
     width: 100%;
 }
 
