@@ -10,6 +10,7 @@ const User = require('./Models/User');
 const AdminUser = require('./Models/AdminUser'); 
 const Feedback = require('./Models/Feedback');
 const Image = require('./Models/ImageModel')
+const LockedUser = require('./Models/LockedUser')
 
 const app = express();
 app.use(cors());
@@ -56,7 +57,7 @@ app.post('/admin/login', async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
-        const token = jwt.sign({ id: adminUser._id, username: adminUser.username }, JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: adminUser._id, username: adminUser.username }, JWT_SECRET);
         res.status(200).json({ message: 'Login successful', token });
     } catch (error) {
         res.status(500).json({ message: 'Login failed', error });
@@ -269,6 +270,7 @@ app.post('/addCategory', async (req, res) => {
 app.get('/getAllCommonCategories', async (req, res) => {
     try {
         const categories = await CommonCategory.find();
+        console.log("trigger : get all common categories")
         res.status(200).json(categories);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching categories', error });
@@ -403,6 +405,30 @@ app.delete('/images/:id', async (req, res) => {
         res.status(200).json({ message: 'Image deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error deleting image', error });
+    }
+});
+
+app.post('/AddNewLockedUser', async (req, res) => {
+    try {
+        const { names } = req.body;
+        if (!Array.isArray(names) || names.length === 0) {
+            return res.status(400).json({ error: 'At least one name is required' });
+        }
+        await LockedUser.deleteMany({});
+        const newUsers = await LockedUser.insertMany(names.map(name => ({ name })));
+        res.status(201).json({ message: 'Users updated successfully', users: newUsers });
+    } catch (error) {
+        console.error('Error saving users:', error);
+        res.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+});
+
+app.get('/GetLockedUsers', async (req, res) => {
+    try {
+        const lockedUsers = await LockedUser.find({});
+        res.status(200).json(lockedUsers);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
 

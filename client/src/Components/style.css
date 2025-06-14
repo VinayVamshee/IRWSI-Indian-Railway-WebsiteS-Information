@@ -161,6 +161,8 @@
     margin: 0px;
     margin-bottom: 2px;
     padding: 5px;
+    font-weight: bold;
+    color: blue;
 
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -176,13 +178,13 @@
 
     width: 100%;
     height: fit-content;
-    padding: 5px;
+    padding: 10px;
 
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.198);
 
     animation: slideDown 0.8s ease-in;
@@ -200,7 +202,7 @@
     padding: 10px;
     display: flex;
     justify-content: flex-start;
-    gap: 5px;
+    gap: 15px;
     width: 100%;
 }
 
@@ -274,7 +276,7 @@
 .WebSite:hover img {
     transform: scale(0.9);
     transition: 0.1s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.852);
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.88));
 }
 
 .WebSite:hover a {
@@ -416,9 +418,17 @@
         font-size: 12px;
     }
 
+    .view-download {
+        margin-top: 10%;
+    }
+
 }
 
 @media (max-width: 560px) {
+
+    .carousel .carousel-item img {
+        border-radius: 45px;
+    }
 
     .Navigation {
         display: none;
@@ -502,6 +512,7 @@
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.194);
 
     min-height: 100vh;
+    max-height: max-content;
 }
 
 .Home .content {
@@ -545,14 +556,14 @@
 }
 
 .carousel {
-    height: 57vh;
-    border-radius: 10px;
-    overflow: hidden;
+    max-width: 1200px;
+    border-radius: 45px;
 }
 
 .carousel .carousel-item img {
     width: 100%;
     object-fit: cover;
+    border-radius: 45px;
 }
 
 .Home h1 {
@@ -564,6 +575,290 @@
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.198);
+    background-color: rgba(255, 255, 255, 0.503);
+}
+
+.vinayvamshee {
+    font-size: large;
+    font-weight: 600;
+    animation: colorChange 0.5s infinite alternate;
+
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+@keyframes colorChange {
+    0% {
+        color: blue;
+    }
+
+    100% {
+        color: red;
+    }
+}
+
+
+
+
+
+.flipbook-container {
+    padding: 50px;
+    min-width: 100%;
+    min-height: 110vh;
+    position: relative;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.flipbook-container .search-container {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    z-index: 100000;
+}
+
+.flipbook-container .search-container .matches {
+    width: 100%;
+    border: 0.5px solid rgb(132, 132, 132);
+    padding: 10px;
+    border-radius: 10px;
+
+    transition: 1s ease-in-out;
+
+    background-color: rgba(255, 255, 255, 0.865);
+
+}
+
+.flipbook-container .search-container ul {
+    padding: 2px;
+    border-radius: 10px;
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+}
+
+.flipbook-container .search-container ul li {
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+.flipbook-container .search-container ul li:hover {
+    cursor: pointer;
+}
+
+.flipbook-container .search-container input {
+    width: 150px;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+}
+
+.flipbook-container .backbutton {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    border: black 1px solid;
+    padding: 4px;
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+}
+
+.flipbook-container .backbutton:hover {
+    background-color: #494949;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px #00000060;
+}
+
+.flipbook-container .color-picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    background-color: white;
+    color: black;
+    border: rgb(119, 119, 119) 1px solid;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.flipbook-container .color-picker input {
+    width: 100px;
+}
+
+.flipbook-container .color-picker input:hover {
+    cursor: pointer;
+}
+
+.flipbook-container .bg-picker {
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    background-color: white;
+    color: black;
+    border: rgb(119, 119, 119) 1px solid;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.flipbook-container .bg-picker input {
+    width: 100px;
+}
+
+.flipbook-container .video-picker {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    background-color: white;
+    color: black;
+    border: rgb(119, 119, 119) 1px solid;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.flipbook-container .video-picker input {
+    width: 100px;
+}
+
+.flipbook-container .background-selector {
+    position: fixed;
+    bottom: 1%;
+    left: 5%;
+    z-index: 1000;
+
     background-color: black;
     color: white;
+    border: black 1px solid;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.flipbook-container .background-selector .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.flipbook-container .controls {
+    position: fixed;
+    right: 3%;
+    bottom: 1%;
+
+    display: flex;
+    gap: 5px;
+
+    z-index: 2000;
+}
+
+.flipbook-container .controls .dropdown-toggle {
+    height: 30px;
+    transition: 0.2s ease-in-out;
+}
+
+.flipbook-container .controls .dropdown-toggle:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.flipbook-container .controls .btn {
+    background-color: white;
+    color: black;
+    transition: 0.2s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.flipbook-container .controls .btn img {
+    height: 20px;
+    width: fit-content;
+}
+
+.flipbook {
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.view-download {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.view-download .btn {
+    background-color: black;
+    color: white;
+    transition: 0.2s ease;
+}
+
+.view-download .btn:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    transform: scale(1.1);
+}
+
+
+/* Flipbook pages */
+.flipbook-page {
+    background-color: #fff;
+    padding: 10px;
+}
+
+/* Individual PDF Page */
+.pdf-page {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Page number indicator */
+.page-indicator {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.page-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }

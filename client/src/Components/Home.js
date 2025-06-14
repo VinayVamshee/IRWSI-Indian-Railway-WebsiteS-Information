@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-export default function Home({ setPage }) {
+export default function Home() {
 
     const [images, setImages] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:3001/images')
+        axios.get('https://vigilance-secr-server.vercel.app/images')
             .then((response) => {
                 setImages(response.data);
             })
@@ -19,7 +20,7 @@ export default function Home({ setPage }) {
     // Handle delete request
     const handleDeleteImage = async (id) => {
         try {
-            await axios.delete(`http://localhost:3001/images/${id}`);
+            await axios.delete(`https://vigilance-secr-server.vercel.app/images/${id}`);
             setImages(images.filter(image => image._id !== id));  // Remove deleted image from state
         } catch (error) {
             console.error('Error deleting image:', error);
@@ -34,7 +35,7 @@ export default function Home({ setPage }) {
     useEffect(() => {
         const fetchCommonBackground = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/getCommonBackground');
+                const response = await axios.get('https://vigilance-secr-server.vercel.app/getCommonBackground');
                 setCommonBackground(response.data.backgroundImage || defaultBackgroundColor);
                 setBackgroundImage(response.data.backgroundImage || defaultBackgroundColor);
             } catch (error) {
@@ -59,7 +60,7 @@ export default function Home({ setPage }) {
         const message = event.target.message.value;
 
         try {
-            await axios.post('http://localhost:3001/feedback', { name, message });
+            await axios.post('https://vigilance-secr-server.vercel.app/feedback', { name, message });
             alert('Thank You for your valuable feedback.');
         } catch (error) {
             console.error('Error submitting feedback:', error);
@@ -72,12 +73,12 @@ export default function Home({ setPage }) {
 
             <div className='mobile-Navigation'>
                 <button className="btn" type="button" data-bs-toggle="collapse" data-bs-target="#Navigation-Collapse" aria-expanded="false" aria-controls="Navigation-Collapse">
-                    <img src='https://www.freeiconspng.com/thumbs/menu-icon/menu-icon-24.png' alt='...' />
+                    <img src='https://i.ibb.co/G3FGV4WJ/Whats-App-Image-2025-02-01-at-17-51-50.jpg' alt='...' />
                 </button>
                 <form className='Search' onSubmit={googleSearch}>
                     <input id='search' type='text' placeholder='Google Search...' />
                 </form>
-                <span onClick={() => setPage("index")}>Indian Railway</span>
+                <Link to='/index'>Indian Railway</Link>
 
             </div>
 
@@ -91,8 +92,8 @@ export default function Home({ setPage }) {
             </div>
 
             <div className='Navigation'>
-                <logo onClick={() => setPage("index")}>
-                    <img src='https://cdn-icons-png.flaticon.com/512/5988/5988117.png' alt='...' />Indian Railway
+                <logo>
+                    <img src='https://i.ibb.co/G3FGV4WJ/Whats-App-Image-2025-02-01-at-17-51-50.jpg' alt='...' />Indian Railway
                 </logo>
 
                 <form className='Search' onSubmit={googleSearch}>
@@ -111,7 +112,7 @@ export default function Home({ setPage }) {
                 <h1>VIGILANCE BRANCH
                     <h3>South East Central Railway <br />Bilaspur</h3>
                 </h1>
-                <div id="carouselExampleAutoplaying" className="carousel custom-carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+                <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
                     <div className="carousel-inner">
                         {images.map((image, index) => (
                             <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={image._id}>
@@ -129,9 +130,9 @@ export default function Home({ setPage }) {
                     </button>
                 </div>
                 <p>A Window for Indian Railway Information</p>
-                <button className="btn btn-dark shadow-lg" onClick={() => setPage("index")}>
+                <Link to='/index' className="btn btn-dark shadow-lg" style={{ marginTop: '-10px' }}>
                     Proceed
-                </button>
+                </Link>
 
                 {
                     AdminToken ?
@@ -190,7 +191,7 @@ export default function Home({ setPage }) {
                                     <strong>Srinivas Rao</strong>
                                     <a href="tel:9752375075">9752375075</a>
                                     <a href="mailto:cvipsecr@gmail.com">cvipsecr@gmail.com</a>
-                                    <a className='d-flex g-1' style={{color:'black', fontSize:'medium'}} href='vinayvamsheeresume.vercel.app'> Developer Details - <p style={{color:'red', fontSize:'medium'}}>Vinay Vamshee</p></a>
+                                    <a className='vinayvamshee' href='https://vinayvamsheeresume.vercel.app/' target="_blank" rel="noopener noreferrer"> Developer Details - Vinay Vamshee</a>
                                 </div>
                             </div>
                         </div>
