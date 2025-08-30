@@ -948,7 +948,7 @@ export default function IndexPage() {
                 {
                     (!token || (token && showHomeSites)) && (
                         <>
-                            <div className='Categories row'>
+                            <div className='Categories'>
                                 {allCommonCategories.map((category, idx) => (
                                     <div key={idx} id={category.Name.replace(/\s+/g, '-').toLowerCase()} className='naming-problem'>
                                         <p>{category.Name}</p>
