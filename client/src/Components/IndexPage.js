@@ -981,7 +981,7 @@ export default function IndexPage() {
 
                             <div className='AllSites row'>
                                 {allSites.map((site, idx) => (
-                                    <div key={idx} className='WebSite'>
+                                    <div key={idx} className='WebSite' style={{width:'13.5%'}}>
                                         {site.pdf ? (
                                             <Link to={`/documentation?file=${encodeURIComponent(site.Url)}`}>
                                                 <img src={site.Logo} alt="..." />{site.Name}
