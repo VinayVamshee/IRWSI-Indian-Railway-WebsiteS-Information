@@ -514,6 +514,10 @@
     .WebSite {
         width: 47.5%;
     }
+
+    .AllSites {
+        display: none;
+    }
 }
 
 @media (max-width: 460px) {
