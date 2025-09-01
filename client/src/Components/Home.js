@@ -73,12 +73,12 @@ export default function Home() {
 
             <div className='mobile-Navigation'>
                 <button className="btn" type="button" data-bs-toggle="collapse" data-bs-target="#Navigation-Collapse" aria-expanded="false" aria-controls="Navigation-Collapse">
-                    <img src='https://i.ibb.co/G3FGV4WJ/Whats-App-Image-2025-02-01-at-17-51-50.jpg' alt='...' />
+                    <img src='https://i.ibb.co/4Zg4QMcY/pngegg.png' alt='...' />
                 </button>
                 <form className='Search' onSubmit={googleSearch}>
                     <input id='search' type='text' placeholder='Google Search...' />
                 </form>
-                <Link to='/index'>Indian Railway</Link>
+                <Link to='/index'>Glance II</Link>
 
             </div>
 
@@ -93,7 +93,7 @@ export default function Home() {
 
             <div className='Navigation'>
                 <logo>
-                    <img src='https://i.ibb.co/G3FGV4WJ/Whats-App-Image-2025-02-01-at-17-51-50.jpg' alt='...' />Indian Railway
+                    <img src='https://i.ibb.co/4Zg4QMcY/pngegg.png' alt='...' />Glance II
                 </logo>
 
                 <form className='Search' onSubmit={googleSearch}>
@@ -128,7 +128,7 @@ export default function Home() {
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
-                <p>A Window for Indian Railway Information</p>
+                <p>A Window For Favourite Websites</p>
                 <Link to='/index' className="btn btn-dark shadow-lg" style={{ marginTop: '-10px' }}>
                     Proceed
                 </Link>
