@@ -538,7 +538,7 @@ export default function IndexPage() {
 
             <div className='mobile-Navigation'>
                 <button className="btn" type="button" data-bs-toggle="collapse" data-bs-target="#Navigation-Collapse" aria-expanded="false" aria-controls="Navigation-Collapse">
-                    <img src='https://i.ibb.co/G3FGV4WJ/Whats-App-Image-2025-02-01-at-17-51-50.jpg' alt='...' />
+                    <img src='https://i.ibb.co/4Zg4QMcY/pngegg.png' alt='...' />
                 </button>
                 <form className='Search' onSubmit={googleSearch}>
                     <input type="text" id=" search" placeholder='Search Website or Google...' value={searchText} onChange={(e) => setSearchText(e.target.value)} />
@@ -546,7 +546,7 @@ export default function IndexPage() {
                 {
                     token ?
                         <span>{userName}</span>
-                        : <Link to='/' className='text-dark'>Indian Railway</Link>
+                        : <Link to='/' className='text-dark'>Glance II</Link>
                 }
             </div>
             <div className="collapse" id="Navigation-Collapse">
@@ -682,12 +682,12 @@ export default function IndexPage() {
 
             <div className='Navigation'>
                 <logo>
-                    <img src='https://i.ibb.co/G3FGV4WJ/Whats-App-Image-2025-02-01-at-17-51-50.jpg' alt='...' />
+                    <img src='https://i.ibb.co/4Zg4QMcY/pngegg.png' alt='...' />
                     {
                         token ?
                             <span>{userName}</span>
                             : <Link to='/' style={{ cursor: 'pointer', textDecoration: 'none' }} className='text-dark'>
-                                Indian Railway
+                                Glance II
                             </Link>
                     }
                 </logo>

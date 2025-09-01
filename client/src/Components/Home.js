@@ -109,8 +109,7 @@ export default function Home() {
             </div>
 
             <div className='content'>
-                <h1>VIGILANCE BRANCH
-                    <h3>South East Central Railway <br />Bilaspur</h3>
+                <h1>My Web At A Glance...
                 </h1>
                 <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
                     <div className="carousel-inner">
