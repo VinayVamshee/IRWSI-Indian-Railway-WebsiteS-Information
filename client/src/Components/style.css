@@ -273,7 +273,7 @@
     align-items: center;
     text-decoration: none;
     color: black;
-    white-space: nowrap;
+    text-align: left;
     gap: 5px;
 }
 
