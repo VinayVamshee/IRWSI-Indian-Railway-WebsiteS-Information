@@ -517,9 +517,15 @@
 }
 
 @media (max-width: 460px) {
-.WebSite {
-    width: 100%;
+    .WebSite {
+        width: 100%;
+    }
 }
+
+@media (max-width: 1040px) {
+    .Site .Categories .naming-problem {
+        width: 100%;
+    }
 }
 
 
