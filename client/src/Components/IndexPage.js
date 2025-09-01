@@ -850,7 +850,7 @@ export default function IndexPage() {
                 {
                     token ?
                         <>
-                            <div className='Categories row'>
+                            <div className='Categories'>
                                 {AllCategory.map((category, idx) => (
                                     <div key={idx} id={category.Category.replace(/\s+/g, '-').toLowerCase()} className='naming-problem'>
                                         <p>{category.Category}</p>
