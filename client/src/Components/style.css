@@ -443,20 +443,16 @@
 
     .carousel .carousel-inner {
         width: 100% !important;
-        /* match parent carousel */
         height: 100% !important;
         border-radius: 45px;
-
         display: flex;
         align-items: center;
     }
 
     .carousel .carousel-item img {
         width: 100% !important;
-        /* fill carousel */
         height: 100% !important;
         object-fit: contain;
-        /* cover to fill, contain to keep ratio */
         border-radius: 45px;
     }
 }
