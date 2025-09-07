@@ -202,16 +202,21 @@
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.595);
     padding: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* responsive columns */
+    gap: 5px; /* spacing between items */
+    width: 100%;
+}
+
+.AllSites .WebSite {
     width: 100%;
 }
 
 .WebSite {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     gap: 3px;
     width: 30.5%;
 
@@ -268,7 +273,6 @@
 
 .WebSite a {
     display: flex;
-
     justify-content: center;
     align-items: center;
     text-decoration: none;

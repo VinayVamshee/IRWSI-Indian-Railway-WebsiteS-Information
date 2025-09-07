@@ -109,19 +109,21 @@ export default function IndexPage() {
         }
     };
 
+    const fetchSites = async () => {
+        if (!token) return;
+        try {
+            const response = await axios.get('https://vigilance-secr-server.vercel.app/GetSite', {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setAllSite(response.data);
+        } catch (error) {
+            console.error("Error fetching sites:", error);
+        }
+    };
+
     useEffect(() => {
-        const fetchSites = async () => {
-            if (!token) return;
-            try {
-                const response = await axios.get('https://vigilance-secr-server.vercel.app/GetSite', {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
-                setAllSite(response.data);
-            } catch (error) {
-                console.error("Error fetching sites:", error);
-            }
-        };
         fetchSites();
+        // eslint-disable-next-line
     }, [token]);
 
     useEffect(() => {
@@ -174,6 +176,8 @@ export default function IndexPage() {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setAllSite(response.data);
+            fetchSites();
+            alert('Updated Successfully');
             setEditSite({ Name: '', Url: '', Logo: '', Category: '', pdf: false });
         } catch (error) {
             console.error("Error updating site:", error);
@@ -263,6 +267,9 @@ export default function IndexPage() {
         try {
             const response = await axios.put(`https://vigilance-secr-server.vercel.app/editCommonSite/${editCommonSite._id}`, editCommonSite);
             setSites(prevSites => prevSites.map(site => site._id === editCommonSite._id ? response.data : site));
+            fetchSites();
+            fetchSitesAndCategories();
+            alert('updated')
         } catch (error) {
             console.error('Error updating site:', error);
             alert('Failed to update site. Please try again.');
@@ -302,19 +309,19 @@ export default function IndexPage() {
     };
 
     const [allCommonCategories, setAllCommonCategories] = useState([]);
+    const fetchSitesAndCategories = async () => {
+        try {
+            const sitesResponse = await axios.get('https://vigilance-secr-server.vercel.app/getAllSites');
+            setAllSites(sitesResponse.data);
+
+            const response = await axios.get('https://vigilance-secr-server.vercel.app/getAllCommonCategories');
+            setAllCommonCategories(response.data);
+        } catch (error) {
+            console.error('Error fetching sites or categories', error);
+        }
+    };
 
     useEffect(() => {
-        const fetchSitesAndCategories = async () => {
-            try {
-                const sitesResponse = await axios.get('https://vigilance-secr-server.vercel.app/getAllSites');
-                setAllSites(sitesResponse.data);
-
-                const response = await axios.get('https://vigilance-secr-server.vercel.app/getAllCommonCategories');
-                setAllCommonCategories(response.data);
-            } catch (error) {
-                console.error('Error fetching sites or categories', error);
-            }
-        };
         fetchSitesAndCategories();
     }, []);
 
@@ -883,7 +890,7 @@ export default function IndexPage() {
                             {/* Display All Sites */}
                             <div className='AllSites row mt-2'>
                                 {AllSite.map((Element, idx) => (
-                                    <div key={idx} className='WebSite' style={{ width: '14.5%' }}>
+                                    <div key={idx} className='WebSite'>
                                         {Element.pdf ? (
                                             <Link to={`/documentation?file=${encodeURIComponent(Element.Url)}`}>
                                                 <img src={Element.Logo} alt="..." />{Element.Name}
@@ -895,16 +902,17 @@ export default function IndexPage() {
                                         )}
                                         {
                                             editMode && (
-                                                <>
+                                                <div className='d-flex'>
                                                     <button
                                                         className='btn btn-outline-primary'
                                                         data-bs-toggle="modal"
                                                         data-bs-target={`#EditModal-${Element._id}`}
-                                                        onClick={() => setEditSite({ ...Element })} >
+                                                        onClick={() => setEditSite({ ...Element })}
+                                                        style={{ borderBottomLeftRadius: '15px' }} >
                                                         Edit
                                                     </button>
-                                                    <button className='btn btn-outline-danger' onClick={() => DeleteSite(Element._id)}>Delete</button>
-                                                </>
+                                                    <button className='btn btn-outline-danger ms-1' onClick={() => DeleteSite(Element._id)}>Delete</button>
+                                                </div>
                                             )
                                         }
                                         <div className="modal fade" id={`EditModal-${Element._id}`} tabIndex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
@@ -981,7 +989,7 @@ export default function IndexPage() {
 
                             <div className='AllSites row'>
                                 {allSites.map((site, idx) => (
-                                    <div key={idx} className='WebSite' style={{ width: '13.5%' }}>
+                                    <div key={idx} className='WebSite'>
                                         {site.pdf ? (
                                             <Link to={`/documentation?file=${encodeURIComponent(site.Url)}`}>
                                                 <img src={site.Logo} alt="..." />{site.Name}
@@ -993,10 +1001,10 @@ export default function IndexPage() {
                                         )}
                                         {
                                             (AdminToken && AdmineditMode) ?
-                                                <>
-                                                    <button className='btn btn-outline-primary' data-bs-toggle="modal" data-bs-target="#EditCommonSiteModal" onClick={() => setEditCommonSite(site)}> Edit</button>
+                                                <div className='d-flex '>
+                                                    <button className='btn btn-outline-primary' style={{ borderBottomLeftRadius: '15px' }} data-bs-toggle="modal" data-bs-target="#EditCommonSiteModal" onClick={() => setEditCommonSite(site)}> Edit</button>
 
-                                                    <div className="modal fade" id="EditCommonSiteModal" tabIndex="-1" aria-labelledby="EditCommonSiteModalLabel" aria-hidden="true">
+                                                    <div className="modal fade " id="EditCommonSiteModal" tabIndex="-1" aria-labelledby="EditCommonSiteModalLabel" aria-hidden="true">
                                                         <div className="modal-dialog">
                                                             <div className="modal-content">
                                                                 <form onSubmit={(e) => { e.preventDefault(); handleCommonSiteUpdate(); }}>
@@ -1050,8 +1058,8 @@ export default function IndexPage() {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button className='btn btn-outline-danger' onClick={() => { deleteSite(site._id); }}> Delete </button>
-                                                </>
+                                                    <button className='btn btn-outline-danger ms-1' onClick={() => { deleteSite(site._id); }}> Delete </button>
+                                                </div>
                                                 :
                                                 null
                                         }
