@@ -883,7 +883,7 @@ export default function IndexPage() {
                             {/* Display All Sites */}
                             <div className='AllSites row mt-2'>
                                 {AllSite.map((Element, idx) => (
-                                    <div key={idx} className='WebSite' style={{width:'13.5%'}}>
+                                    <div key={idx} className='WebSite' style={{ width: '14.5%' }}>
                                         {Element.pdf ? (
                                             <Link to={`/documentation?file=${encodeURIComponent(Element.Url)}`}>
                                                 <img src={Element.Logo} alt="..." />{Element.Name}
@@ -981,7 +981,7 @@ export default function IndexPage() {
 
                             <div className='AllSites row'>
                                 {allSites.map((site, idx) => (
-                                    <div key={idx} className='WebSite' style={{width:'13.5%'}}>
+                                    <div key={idx} className='WebSite' style={{ width: '13.5%' }}>
                                         {site.pdf ? (
                                             <Link to={`/documentation?file=${encodeURIComponent(site.Url)}`}>
                                                 <img src={site.Logo} alt="..." />{site.Name}
