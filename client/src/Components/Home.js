@@ -78,7 +78,7 @@ export default function Home() {
                 <form className='Search' onSubmit={googleSearch}>
                     <input id='search' type='text' placeholder='Google Search...' />
                 </form>
-                <Link to='/index'>Glance II</Link>
+                <Link to='/index'>WebHub</Link>
 
             </div>
 
@@ -93,7 +93,7 @@ export default function Home() {
 
             <div className='Navigation'>
                 <logo>
-                    <img src='https://i.ibb.co/4Zg4QMcY/pngegg.png' alt='...' />Glance II
+                    <img src='https://i.ibb.co/4Zg4QMcY/pngegg.png' alt='...' />WebHub
                 </logo>
 
                 <form className='Search' onSubmit={googleSearch}>

@@ -553,7 +553,7 @@ export default function IndexPage() {
                 {
                     token ?
                         <span>{userName}</span>
-                        : <Link to='/' className='text-dark'>Glance II</Link>
+                        : <Link to='/' className='text-dark'>WebHub</Link>
                 }
             </div>
             <div className="collapse" id="Navigation-Collapse">
@@ -694,7 +694,7 @@ export default function IndexPage() {
                         token ?
                             <span>{userName}</span>
                             : <Link to='/' style={{ cursor: 'pointer', textDecoration: 'none' }} className='text-dark'>
-                                Glance II
+                                WebHub
                             </Link>
                     }
                 </logo>
